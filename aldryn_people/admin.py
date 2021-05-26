@@ -36,7 +36,7 @@ class PersonAdmin(PlaceholderAdminMixin,
             model = Person._meta.get_field('user').model
             if model.objects.count() > threshold:
                 kwargs['widget'] = admin.widgets.ForeignKeyRawIdWidget(
-                    db_field.rel, self.admin_site, using=kwargs.get('using'))
+                    db_field.remote_field, self.admin_site, using=kwargs.get('using'))
                 return db_field.formfield(**kwargs)
         return super(PersonAdmin, self).formfield_for_foreignkey(
             db_field, request, **kwargs)
