@@ -2,27 +2,27 @@
 
 from __future__ import unicode_literals
 
-from django.conf.urls import url
+from django.conf.urls import re_path
 
 from aldryn_people.views import DownloadVcardView, GroupDetailView, GroupListView, PersonDetailView
 
 
 urlpatterns = [
-    url(r'^group/(?P<pk>[0-9]+)/$',
+    re_path(r'^group/(?P<pk>[0-9]+)/$',
         GroupDetailView.as_view(), name='group-detail'),
-    url(r'^group/(?P<slug>[A-Za-z0-9_\-]+)/$',
+    re_path(r'^group/(?P<slug>[A-Za-z0-9_\-]+)/$',
         GroupDetailView.as_view(), name='group-detail'),
 
-    url(r'^(?P<pk>[0-9]+)/$',
+    re_path(r'^(?P<pk>[0-9]+)/$',
         PersonDetailView.as_view(), name='person-detail'),
-    url(r'^(?P<slug>[A-Za-z0-9_\-]+)/$',
+    re_path(r'^(?P<slug>[A-Za-z0-9_\-]+)/$',
         PersonDetailView.as_view(), name='person-detail'),
 
-    url(r'^(?P<pk>[0-9]+)/download/$',
+    re_path(r'^(?P<pk>[0-9]+)/download/$',
         DownloadVcardView.as_view(), name='download_vcard'),
-    url(r'^(?P<slug>[A-Za-z0-9_\-]+)/download/$',
+    re_path(r'^(?P<slug>[A-Za-z0-9_\-]+)/download/$',
         DownloadVcardView.as_view(), name='download_vcard'),
 
-    url(r'^$',
+    re_path(r'^$',
         GroupListView.as_view(), name='group-list'),
 ]
